@@ -1,5 +1,5 @@
 <?php
-
+header('Content-type: application/json; charset=utf=8');
 // Kickstart the framework
 $f3=require('lib/base.php');
 
