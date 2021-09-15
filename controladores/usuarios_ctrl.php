@@ -6,21 +6,23 @@ class usuarios_ctrl {
 
     public function __construct(){
 
-        $this->m_usuario = new m_clientes();
+        $this->m_usuario = new m_usuarios();
 
     }
     
-    public function crear($f3){
+     public function crear($f3){
 
         $this->m_usuario->set('usuario', $f3->get('POST.usuario'));
         $this->m_usuario->set('clave', $f3->get('POST.clave'));
-        $this->m_usuario->set('nombre', $f3->get('POST.stock'));
+        $this->m_usuario->set('nombre', $f3->get('POST.nombre'));
         $this->m_usuario->set('telefono', $f3->get('POST.telefono'));
         $this->m_usuario->set('correo', $f3->get('POST.correo'));
         $this->m_usuario->set('activo', $f3->get('POST.activo'));
+        $this->m_usuario->set('password', $f3->get('POST.password'));
+        $this->m_usuario->set('perfil', $f3->get('POST.perfil'));
         $this->m_usuario->save();
          echo json_encode([
-            'mensaje' => 'Pedido creado',
+            'mensaje' => 'Usuario creado creado',
             'info' => [
                 'id' => $this->m_usuario->get('id')
             ]
@@ -38,7 +40,7 @@ class usuarios_ctrl {
             $item = $this->m_usuario->cast();
         }else{
                 $msg = "Pedido no encontrado";
-        }
+
         echo json_encode([
             'mensaje' => $msg,
             'info' => [
@@ -46,6 +48,7 @@ class usuarios_ctrl {
             ]
         ]);
 
+        }
     }
 
     public function actualizar($f3)
@@ -60,7 +63,7 @@ class usuarios_ctrl {
                 $msg = "El registro no se pudo modificar debido a que el nombre usuario o correo se encuentra uso por otro usuario.";
             } else {
                 $this->m_usuario->set('usuario', $f3->get('POST.usuario'));
-                $this->m_usuario->set('clave', md5($f3->get('POST.clave')));
+                $this->m_usuario->set('clave', $f3->get('POST.clave'));
                 $this->m_usuario->set('nombre', $f3->get('POST.nombre'));
                 $this->m_usuario->set('telefono', $f3->get('POST.telefono'));
                 $this->m_usuario->set('correo', $f3->get('POST.correo'));
