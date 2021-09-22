@@ -11,11 +11,24 @@ if ((float)PCRE_VERSION<8.0)
 $f3->config('config.ini');
 $f3->config('routes.ini');
 
-$f3->set('DB',new DB\SQL('mysql:host=' . $f3->get('database.host') . ';port=3306;dbname=' . $f3->get('database.dbname'), $f3->get('database.user'), $f3->get('database.pass')), $options = array(
-    \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION, // generic attribute
-    \PDO::ATTR_PERSISTENT => TRUE,  // we want to use persistent connections
-    \PDO::MYSQL_ATTR_COMPRESS => TRUE, // MySQL-specific attribute
-));
+$f3->set('DB',new DB\SQL('mysql:host=' . $f3->get('database.host') . ';port=3306;dbname=' . $f3->get('database.dbname'), $f3->get('database.user'), $f3->get('database.pass'),
+	array(
+		PDO::MYSQL_ATTR_SSL_KEY    =>'client-key.pem',
+		PDO::MYSQL_ATTR_SSL_CERT=>'client-cert.pem',
+		PDO::MYSQL_ATTR_SSL_CA    =>'server-ca.pem',
+		PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false,
+	)),
+	$options = array(
+		\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION, // generic attribute
+		\PDO::ATTR_PERSISTENT => TRUE,  // we want to use persistent connections
+		\PDO::MYSQL_ATTR_COMPRESS => TRUE, // MySQL-specific attribute
+		));
+
+
+
+
+
+
 
 
 
