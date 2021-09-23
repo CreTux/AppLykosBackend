@@ -66,7 +66,7 @@ class clientes_ctrl {
 
     }
 
-    // pendiente error "Table Clientes does not have a primary key"
+    // funcionando
     public function actualizar($f3){
         $ID_Cliente = $f3->get('POST.ID_Cliente');
         $this->m_cliente->load(['ID_Cliente=?', $ID_Cliente]);
@@ -77,7 +77,6 @@ class clientes_ctrl {
             if($_cliente->loaded() > 0){
             $msg = " El registro no se pudo modificar debido a que el RFC se encuentra en uso por otro usuario";
             }else{
-                $this->m_cliente->set('ID_Cliente', $f3->get('POST.ID_Cliente'));
                 $this->m_cliente->set('Nombre', $f3->get('POST.Nombre'));
                 $this->m_cliente->set('Apellido_P', $f3->get('POST.Apellido_P'));
                 $this->m_cliente->set('Apellido_M', $f3->get('POST.Apellido_M'));
@@ -121,7 +120,7 @@ class clientes_ctrl {
         ]);
     }
 
-    // pendiente error "Table Clientes does not have a primary key"
+    // funcionando
     public function eliminar($f3){
 
         $ID_Cliente = $f3->get('POST.ID_Cliente');
@@ -129,10 +128,10 @@ class clientes_ctrl {
         $msg = "";
         $item = array();
         if($this->m_cliente->loaded() > 0){
-            $msg = "cliente_id eliminado";
+            $msg = "Cliente eliminado";
             $this->m_cliente->erase();
         }else{
-                $msg = "cliente_id no encontrado";
+                $msg = "Cliente no encontrado";
         }
         echo json_encode([
             'mensaje' => $msg,

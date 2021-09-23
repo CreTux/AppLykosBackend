@@ -1,2 +1,6 @@
 /tmp/
 /.idea/
+ssl/client-cert.pem
+ssl/client-key.pem
+ssl/server-ca.pem
+config.ini

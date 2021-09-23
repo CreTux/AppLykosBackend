@@ -13,9 +13,9 @@ $f3->config('routes.ini');
 
 $f3->set('DB',new DB\SQL('mysql:host=' . $f3->get('database.host') . ';port=3306;dbname=' . $f3->get('database.dbname'), $f3->get('database.user'), $f3->get('database.pass'),
 	array(
-		PDO::MYSQL_ATTR_SSL_KEY    =>'client-key.pem',
-		PDO::MYSQL_ATTR_SSL_CERT=>'client-cert.pem',
-		PDO::MYSQL_ATTR_SSL_CA    =>'server-ca.pem',
+		PDO::MYSQL_ATTR_SSL_KEY    =>'ssl/client-key.pem',
+		PDO::MYSQL_ATTR_SSL_CERT=>'ssl/client-cert.pem',
+		PDO::MYSQL_ATTR_SSL_CA    =>'ssl/server-ca.pem',
 		PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false,
 	)),
 	$options = array(
