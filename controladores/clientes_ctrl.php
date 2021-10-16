@@ -10,8 +10,6 @@ class clientes_ctrl {
 
     }
     
-
-    //funcionando
     public function crear($f3){
 
         
@@ -37,14 +35,8 @@ class clientes_ctrl {
                     'id' => $this->m_cliente->get('ID_Cliente')
                 ]
             ]);
-             
-
-        
-
-       
     }
 
-    //funcionando
     public function consultar($f3){
 
         $ID_Cliente = $f3->get('POST.ID_Cliente');
@@ -66,7 +58,6 @@ class clientes_ctrl {
 
     }
 
-    // funcionando
     public function actualizar($f3){
         $ID_Cliente = $f3->get('POST.ID_Cliente');
         $this->m_cliente->load(['ID_Cliente=?', $ID_Cliente]);
@@ -102,8 +93,6 @@ class clientes_ctrl {
         ]);
     }
     
-
-    //funcionando
     public function listado($f3){
         
         $result = $this->m_cliente->find();
@@ -120,7 +109,6 @@ class clientes_ctrl {
         ]);
     }
 
-    // funcionando
     public function eliminar($f3){
 
         $ID_Cliente = $f3->get('POST.ID_Cliente');
